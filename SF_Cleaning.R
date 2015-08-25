@@ -1,5 +1,5 @@
 ##Cleaning Data
-train <- read.csv("C:/Users/ndr/Documents/Projects/R Projects/San Fran/train.csv")
+train <- read.csv("C:/Users/ndr/Documents/Projects/R Projects/SF Crime/train.csv")
 
 SF_clean <- function() {
     
