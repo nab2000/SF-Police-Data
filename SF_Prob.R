@@ -3,7 +3,7 @@
 ## for any data frame in a similar foram provided it is given the 
 ## data frame and the column where the numeric data starts 
 
-Prob <- function(df, start) {
+Prob <- function(df = clean_df, start =4) {
     for (i in 1:nrow(df)) {
         cols <- ncol(df)
         
