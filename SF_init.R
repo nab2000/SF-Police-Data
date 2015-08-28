@@ -7,6 +7,6 @@ SF_init <- function() {
     source("C:/Users/ndr/Documents/Projects/R Projects/SF Crime/SF_Prob.R")
     SF_clean()
     SF_Prob()
-    SF_Analy()
+    ##SF_Analy()
     
 }

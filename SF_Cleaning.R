@@ -1,8 +1,8 @@
 ##Cleaning Data
 
-SF_clean <- function(file_name = "train", dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/"){
+SF_clean <- function(file_name = "train.csv", dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/"){
     
-    fil_loc <- paste(dir, file_name, sep = "")
+    file_loc <- paste(dir, file_name, sep = "")
     train <- read.csv(file_loc)
     
     train$Year <- as.Date(train[,1])
