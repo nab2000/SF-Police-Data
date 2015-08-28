@@ -3,12 +3,17 @@
 SF_Analy <- function(file_name = "test.csv", prob_tbl = prob_table, start = 1, dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/"){
     ## check if given file_name is a data frame or file
     file_loc <- paste (dir, file_name, sep ="")
-    if (exists(file_loc)){
-        test <- read.csv(file_loc)
+
+    if (file.exists(file_loc)){
+        test <<- read.csv(file_loc)
+    } 
+    else if (exists(file_name)) {
+        test <<- file_name
+       
     }
-    else {
-        test <- file_name
-    }
+    
+    else { print("file does not exist"); stop }
+    
     
     ## turn date and time column into year column
     test$Year <- as.Date(test[,2])
