@@ -9,6 +9,7 @@ SF_Prob <- function(df = clean_df, start =4) {
         
         df$sum[i] <- sum(df[i, start:cols]) 
     }
+    
     prob_table <- as.data.frame(NULL)
     for (i in 1:nrow(df)) {
         for(h in 1:ncol(df)) {

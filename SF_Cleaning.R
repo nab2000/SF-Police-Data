@@ -9,7 +9,6 @@ SF_clean <- function(file_name = "train.csv", dir = "C:/Users/ndr/Documents/Proj
     train$Year <- as.numeric(format(train$Year, "%Y"))
     
     clean_df <- as.data.frame(NULL)
-    
     row_no <- 0
     for (w in 1: length(unique(train$Year))){
         year <- unique(train$Year)[w]
@@ -31,7 +30,9 @@ SF_clean <- function(file_name = "train.csv", dir = "C:/Users/ndr/Documents/Proj
             }
         }
     }
-names(clean_df) <- c("DayOfWeek", "PdDistrict", "Year", as.character(unique(train$Category)))
+
+
+names(clean_df) <- c("DayOfWeek", "PdDistrict", "Year", names(summary(train$Category)))
 
 clean_df$Year <- as.factor(clean_df$Year)
 clean_df <<- clean_df
