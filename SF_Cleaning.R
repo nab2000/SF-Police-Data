@@ -44,6 +44,7 @@ SF_clean <- function(file_name = "train.csv", dir = "C:/Users/ndr/Documents/Proj
 names(clean_df) <- c("DayOfWeek", "PdDistrict", "Year", "Month", names(summary(train$Category)))
 
 clean_df$Year <- as.factor(clean_df$Year)
+clean_df$Month <- as.factor(clean_df$Month)
 save_loc <- paste(dir, save_as, ".csv", sep = "")
 write.csv(clean_df, save_loc)
 clean_df <<- clean_df
