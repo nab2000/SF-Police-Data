@@ -2,7 +2,7 @@
 ##correctly formats them for submission for Kaggle Competition
 
 SF_compiler <- function(no_files = 10, file_name = "results", 
-                     file_type = "csv", output_file_name = "Final_Results",
+                    output_file_name = "Final_Results",
                      dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/"){
     
     data_frame <- as.data.frame(NULL)
@@ -20,7 +20,8 @@ SF_compiler <- function(no_files = 10, file_name = "results",
     }
     ## this removes year, precient, and day of week column
     final_df <-  data_frame[, c(1, 5:ncol(data_frame))]
+    
     ## outputs final file
-    output_loc <- paste(dir,output_file_name,".", "csv", sep="")
+    output_loc <- paste(dir,output_file_name,".csv", sep="")
     write.csv(final_df, output_loc, row.names=F)
 }
