@@ -1,4 +1,4 @@
-SF_clean <- function(file_name = "train.csv", vars = c("Month", "Year", "DayOfWeek", "PdDistrict"), dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/", 
+SF_sort <- function(file_name = "train.csv", vars = c("Month", "Year", "DayOfWeek", "PdDistrict"), dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/", 
                      save_as = "sort_df"){
     loc <- "C:/Users/ndr/Documents/R Packages"
     .libPaths(loc)
