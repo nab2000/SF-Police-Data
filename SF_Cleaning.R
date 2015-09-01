@@ -46,7 +46,7 @@ names(clean_df) <- c("DayOfWeek", "PdDistrict", "Year", "Month", names(summary(t
 clean_df$Year <- as.factor(clean_df$Year)
 clean_df$Month <- as.factor(clean_df$Month)
 save_loc <- paste(dir, save_as, ".csv", sep = "")
-write.csv(clean_df, save_loc)
+write.csv(clean_df, save_loc, row.names = F)
 clean_df <<- clean_df
 }
 
