@@ -1,6 +1,7 @@
 ##Cleaning Data
 
-SF_clean <- function(file_name = "train.csv", dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/", save_as = "clean_df"){
+SF_clean <- function(file_name = "train.csv", dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/", 
+                     save_as = "clean_df"){
     
     file_loc <- paste(dir, file_name, sep = "")
     train <- read.csv(file_loc)
@@ -40,7 +41,7 @@ SF_clean <- function(file_name = "train.csv", dir = "C:/Users/ndr/Documents/Proj
     }
 
 
-names(clean_df) <- c("DayOfWeek", "PdDistrict", "Year", names(summary(train$Category)))
+names(clean_df) <- c("DayOfWeek", "PdDistrict", "Year", "Month", names(summary(train$Category)))
 
 clean_df$Year <- as.factor(clean_df$Year)
 save_loc <- paste(dir, save_as, ".csv", sep = "")
