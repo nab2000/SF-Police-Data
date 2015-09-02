@@ -7,11 +7,12 @@ SF_sort <- function(file_name = "train.csv", vars = c("Month", "Year", "DayOfWee
     ## pulls in data and then summarizes crime category by vars
     
     file_loc <- paste(dir, file_name, sep = "")
-    train <- NULL
+    
     if (exists(file_name)) {
         train <- get(file_name)
         
     } 
+    
     else if (file.exists(file_loc)){
         train <- read.csv(file_loc, check.names = F)
         
