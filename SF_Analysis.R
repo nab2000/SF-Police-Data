@@ -1,6 +1,7 @@
 ## analyzing the test data
 
-SF_Analy <- function(file_name = "test.csv", prob_tbl = prob_table, start = 1, dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/"){
+SF_Analy <- function(file_name = "test.csv", prob_tbl = prob_table, start = 1, save_as = "results", 
+                     dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/"){
     ## check if given file_name is a data frame or file
     file_loc <- paste (dir, file_name, sep ="")
 
@@ -46,7 +47,7 @@ SF_Analy <- function(file_name = "test.csv", prob_tbl = prob_table, start = 1, d
         }
         na_list <- !is.na(output[,1])
         output <- output[na_list, ]
-        output_file_loc <- paste(dir, "results", n, ".csv", sep ="")    
+        output_file_loc <- paste(dir, save_as, n, ".csv", sep ="")    
         write.csv(output, file = output_file_loc, row.names=F)
      }
 
