@@ -1,4 +1,4 @@
-##Cleaning Data
+##Cleaning Data function
 
 SF_clean <- function(file_name = "train.csv", dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/", 
                      save_as = "clean_df"){
