@@ -1,33 +1,39 @@
-SF_sort <- function(file_name = "train.csv", vars = c("Month", "Year", "DayOfWeek", "PdDistrict"), dir = "C:/Users/ndr/Documents/Projects/R Projects/SF Crime/", 
-                     save_as = "sort_df"){
-    loc <- "C:/Users/ndr/Documents/R Packages"
-    .libPaths(loc)
-    library(plyr)
-    library(tidyr)
-    ## pulls in data and then summarizes crime category by vars
-    
-    file_loc <- paste(dir, file_name, sep = "")
+## this function will take a file or data frame with a specified
+## categorical variable (cat_var) and convert it into a a data frame and 
+##csv file where the occurence of the categorical variable is summed as a 
+##function of other variables specified by var
+SF_sort <- function(file_name = "train", 
+                    vars = c("Month", "Year", "DayOfWeek", "PdDistrict"), 
+                    dir = "./", 
+                    save_as = "sort_df", date_format = TRUE, date_col = 1,
+                    cat_var = "Category"){
+    ## load in necessary libraries
+    require(plyr)
+    require(tidyr)
+   
+    ## Look for data frame first before pulling in csv file
+    file_loc <- paste(dir, file_name, ".csv", sep = "")
     
     if (exists(file_name)) {
         train <- get(file_name)
-        
     } 
     
     else if (file.exists(file_loc)){
-        train <- read.csv(file_loc, check.names = F)
-        
+        train <- read.csv(file_loc, check.names = FALSE)
     }
     
     else { print("file does not exist"); stop }
-    
-    train$Year <- as.Date(train[,1])
+
+    ## This will convert a Dates column in yyyy-mm-dd hh:mm:ss to year
+    ## and month. This can be turned off it these columns already exist
+    if(date_format) {
+    train$Year <- as.Date(train[,date_col])
     train$Year <- as.numeric(format(train$Year, "%Y"))
-    
-    train$Month <- as.Date(train[,1])
+    train$Month <- as.Date(train[,date_col])
     train$Month <- format(train$Month, "%b")
+    }
 
-
-    sort_df <- sapply(split(train$Category, train[,vars]), summary)
+    sort_df <- sapply(split(train[,cat_var], train[,vars]), summary)
 
     sort_df <- as.data.frame(sort_df)
     sort_df <- t(sort_df)
