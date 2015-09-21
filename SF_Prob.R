@@ -4,7 +4,7 @@
 SF_Prob <- function(file_name = "sort_df", dir = "./", 
                     save_as = "prob_table", beg = 5 ) {
     ##check to make sure file or data frame exist
-    file_loc <- paste (dir, file_name, sep ="")
+    file_loc <- paste (dir, file_name, ".csv", sep ="")
     if (exists(file_name)) {
         test <<- get(file_name)
     } 
