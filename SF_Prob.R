@@ -39,7 +39,7 @@ SF_Prob <- function(file_name = "sort_df", dir = "./",
     prob_table[,"sums"] <- NULL
 
     save_loc <- paste(dir, save_as, ".csv", sep = "")
-    write.csv(prob_table, save_loc)
+    write.csv(prob_table, save_loc, row.names = FALSE)
     prob_table <<- prob_table         
 }
  
