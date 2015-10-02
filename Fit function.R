@@ -22,10 +22,12 @@ SF_Analy <- function(file_name = "test", prob_tbl = "prob_table",
     else { print("file does not exist"); stop }
     
     ## turn date and time column into year column
-    test$Year <<- as.Date(test[, "Dates"])
-    test$Year <<- as.numeric(format(test$Year, "%Y"))
-    test$Month <<- as.Date(test[,"Dates"])
-    test$Month <<- format(test$Month, "%b")
+    if(date_format){
+        test$Year <<- as.Date(test[, "Dates"])
+        test$Year <<- as.numeric(format(test$Year, "%Y"))
+        test$Month <<- as.Date(test[,"Dates"])
+        test$Month <<- format(test$Month, "%b")
+    }
  
     ##generate linear model from Prob_tbl      
     for(i in 1:39){
@@ -36,14 +38,15 @@ SF_Analy <- function(file_name = "test", prob_tbl = "prob_table",
                              data = prob_tbl))
         
     }
+    
     results_df <- data.frame(Id = test[,1])
-
     ## apply linnear models 
     for (i in 1:39){
         col_no <- i+4
         var_name <- colnames(prob_tbl)[col_no]
         fit_name <- paste(var_name, "ft", sep="")
         col <-     predict(get(fit_name), test)
+        col[col < 0] <- 0
         results_df <- cbind(results_df, col)
         colnames(results_df)[i+1] <- var_name
     }
